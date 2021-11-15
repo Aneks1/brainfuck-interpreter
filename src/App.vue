@@ -1,27 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <textarea rows="10" placeholder="idk brainfuck ¯\_(ツ)_/¯" v-model="code"></textarea>
+    <br>
+    <button @click="run()">Run</button>
+    <br>
+    <span>Output:<br>{{ output }}</span>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent } from 'vue'
+import readCode from './readCode'
 
 export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-});
+    name: 'Interpreter',
+    data() {
+        return {
+            code: '',
+            output: ''
+        }
+    },
+    methods: {
+        run() {
+            const outputMsg = readCode(this.code)
+            this.output = outputMsg
+        }
+    }
+})
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
