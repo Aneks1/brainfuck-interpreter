@@ -1,5 +1,5 @@
 <template>
-    <textarea rows="10" placeholder="idk brainfuck ¯\_(ツ)_/¯" v-model="code"></textarea>
+    <textarea rows="10" placeholder="++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++. (Hello World!)" v-model="code"></textarea>
     <br>
     <button @click="run()">Run</button>
     <br>
