@@ -1,0 +1,81 @@
+/* Designed by Andy Clymer */
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
+body {
+    margin: 0px;
+    font-family: Calibri;
+    background-image: linear-gradient(to bottom right, rgb(48, 0, 90), rgb(0, 61, 82));
+    color: white;
+}
+button:hover {
+    cursor: pointer;
+}
+.relative {
+    position: relative;
+}
+#container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+}
+#container::before {
+    content: "";
+    position: absolute;
+    background-image: url("./assets/background.jpg");
+    width: 100%; height: 100%;
+    opacity: 50%;
+}
+#title {
+    font-size: 60px;
+    font-family: 'Tilt Warp', cursive;
+}
+textarea {
+    background: transparent;
+    outline: none;
+    border: 3px solid rgba(255, 255, 255, 0.62);
+    border-radius: 10px;
+    width: 50vw; height: 30vh;
+    font-size: 17px;
+    box-sizing: border-box;
+    padding: 0.75rem;
+    color: white;
+}
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.33);
+}
+#debug {
+    padding: 0.5rem;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.62);
+    background-color: rgba(255, 255, 255, 0.094);
+    border: 2px solid rgba(255, 255, 255, 0.62);
+    border-radius: 5px;
+    width: 5vw; height: 5vh;
+}
+#debug:hover {
+    background-color: rgba(255, 255, 255, 0.201);
+}
+#outputBox {
+    width: 50vw;
+    box-sizing: border-box;
+    padding: 0.75rem;
+    height: fit-content;
+    border: 3px solid rgba(255, 255, 255, 0.62);
+    border-radius: 10px;
+    font-size: 20px;
+}
+#output {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.652);
+    font-weight: bold;
+}
+#data {
+    text-align: center;
+    width: 45vw; height: fit-content;
+    color: rgba(255, 255, 255, 0.652);
+    font-weight: normal;
+}

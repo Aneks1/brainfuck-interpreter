@@ -1,9 +1,13 @@
 <template>
-    <textarea rows="10" placeholder="++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++. (Hello World!)" v-model="code"></textarea>
-    <br>
-    <button @click="run()">Run</button>
-    <br>
-    <span>Output:<br>{{ output }}</span>
+    <div id="container" class="relative">
+        <span id="title" class="relative">Brainfuck Interpreter</span>
+        <textarea class="relative" rows="10" placeholder="++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++. (Hello World!)" v-model="code"></textarea>
+        <div id="outputBox" class="relative">
+            <span id="output">Output: </span>
+            <span id="data">{{ output }}</span>
+        </div>           
+        <button id="debug" class="relative" @click="run()">Debug</button>
+    </div>
 </template>
 
 <script lang="ts">
@@ -26,3 +30,7 @@ export default defineComponent({
     }
 })
 </script>
+
+<style>
+    @import "./style.css";
+</style>

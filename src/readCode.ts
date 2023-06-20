@@ -1,70 +1,66 @@
 export default function readCode(code: string): string {
-    const allowedSymbols = ['>', '<', '+', '-', '.', ',', '[', ']']
+    const symbols = ['>', '<', '+', '-', '.', ',', '[', ']']
 
-    let cells: number[] = [0]
-    let currentCell = 0
+    const pointers: number[] = []
+    for(let i = 0; i<(2**15); i++) pointers.push(0)
+    console.log(pointers.length)
+    let currentPointer = 0
 
     const loops: number[] = []
-    let innerLoops = 0
+    let jumping = false
+    let jumpedLoops = 0
 
-    let isLooping = false
-
+    let input = ''
     let output = ''
 
     for(let i = 0; i <= code.length - 1; i++) {
-
-        if(isLooping) {
-            if (code[i] == "[") innerLoops++
-            if (code[i] == "]") {
-                if (innerLoops == 0) isLooping = false;
-                else innerLoops--;
-            }
-        }
-
-        if(!allowedSymbols.includes(code[i])) break
-
-        switch(code[i]) {
+        console.log(currentPointer, pointers[currentPointer])
+        if(!symbols.includes(code[i])) continue
+        else switch(code[i]) {
             case ">":
-                currentCell++
-                if(!cells[currentCell]) cells.push(0)
+                if(jumping) break
+                currentPointer++ // Moves to the next pointer
+                if(currentPointer >= pointers.length) currentPointer = pointers.length - currentPointer
                 break
             case "<":
-                currentCell--
-                if(currentCell < 0) { reset(); return 'Error: You can\'t go back with "<" before the first cell.' }
+                if(jumping) break
+                currentPointer-- // Moves to the previous pointer
+                if(currentPointer < 0) currentPointer = pointers.length + currentPointer
                 break
             case "+":
-                cells[currentCell]++
-                if(cells[currentCell] > 255) { reset(); return 'Cells can\'t have a value higher value than 255' }
+                if(jumping) break
+                pointers[currentPointer]++ // Increments the byte at the pointer
                 break
             case "-":
-                cells[currentCell]--
+                if(jumping) break
+                pointers[currentPointer]-- // Decrements the byte at the pointer
                 break
             case ".":
-                output = output + String.fromCharCode(cells[currentCell])
+                if(jumping) break
+                output = output + String.fromCharCode(pointers[currentPointer]) // Gets the char of the code at the pointer
                 break
-            case ",":
-                cells[currentCell] = prompt()!.charCodeAt(1);
+            case ",": 
+                if(jumping) break
+                input = prompt("Write a character to be stored: ")! // Asks for input
+                pointers[currentPointer] = input.charCodeAt(0) // Saves its charCode as the current pointer
                 break;
             case "[":
-                if(cells[currentCell] == 0) {
-                    isLooping = true
-                } else {
-                    loops.push(i);
+                if(jumping) {
+                    jumpedLoops++
+                    break
                 }
+                if(pointers[currentPointer] == 0) jumping = true // If the value at the pointer is 0, jump to the matching ]
+                else loops.push(i) // If it is not 0, enter the loop
                 break
             case "]":
-                if(cells[currentCell] != 0) {
-                    i = loops[loops.length - 1]
-                } else {
-                    loops.pop()
+                if(jumping) {
+                    if(jumpedLoops == 0) jumping = false
+                    else jumpedLoops--
+                    break
                 }
+                if(pointers[currentPointer] != 0) i = loops[loops.length - 1] // If the pointer isn't 0, return to the beginning of the loop (stored as the last object in the array)
+                else loops.pop() // If it is 0, get out of the loop
         }
     }
-
-    function reset() {
-        currentCell = 0
-        cells = [0]
-    }
-
     return output
 }
