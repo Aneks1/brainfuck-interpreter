@@ -1,3 +1,3 @@
 module.exports = {
-	publicPath: '/'
+	publicPath: 'https://aneks1.github.io/brainfuck-interpreter/'
 };

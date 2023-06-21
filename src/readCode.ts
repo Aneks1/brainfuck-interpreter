@@ -3,7 +3,6 @@ export default function readCode(code: string): string {
 
     const pointers: number[] = []
     for(let i = 0; i<(2**15); i++) pointers.push(0)
-    console.log(pointers.length)
     let currentPointer = 0
 
     const loops: number[] = []
@@ -14,7 +13,6 @@ export default function readCode(code: string): string {
     let output = ''
 
     for(let i = 0; i <= code.length - 1; i++) {
-        console.log(currentPointer, pointers[currentPointer])
         if(!symbols.includes(code[i])) continue
         else switch(code[i]) {
             case ">":
@@ -41,7 +39,7 @@ export default function readCode(code: string): string {
                 break
             case ",": 
                 if(jumping) break
-                input = prompt("Write a character to be stored: ")! // Asks for input
+                input = prompt("Write a character to be stored: ") as string // Asks for input
                 pointers[currentPointer] = input.charCodeAt(0) // Saves its charCode as the current pointer
                 break;
             case "[":

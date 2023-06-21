@@ -9,6 +9,7 @@ cd dist
 # echo 'www.example.com' > CNAME
 git init
 git add -A
-git commit -m 'deploy'
-git push -f git@github.com:Aneks1/brainfuck-interpreter.git main:gh-pages
+git commit -m "Deploy"
+git branch -m gh-pages
+git push -f git@github.com:Aneks1/brainfuck-interpreter.git gh-pages
 cd -
