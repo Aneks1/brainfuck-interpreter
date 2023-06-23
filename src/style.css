@@ -25,13 +25,14 @@ button:hover {
 #container::before {
     content: "";
     position: absolute;
-    background-image: url("./assets/background.jpg");
+    background-image: url(./assets/background.jpg);
     width: 100%; height: 100%;
-    opacity: 50%;
+    opacity: 0.5;
 }
 #title {
     font-size: 60px;
     font-family: 'Tilt Warp', cursive;
+    background-size: cover;
 }
 textarea {
     background: transparent;
