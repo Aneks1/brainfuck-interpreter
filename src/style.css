@@ -45,6 +45,7 @@ textarea {
     box-sizing: border-box;
     padding: 0.75rem;
     color: white;
+    resize: none;
 }
 textarea::placeholder {
     color: rgba(255, 255, 255, 0.33);

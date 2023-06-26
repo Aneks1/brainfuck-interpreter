@@ -1,3 +1,0 @@
-# TODO
-
-- CSS media queries
