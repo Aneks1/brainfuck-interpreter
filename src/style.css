@@ -32,14 +32,15 @@ button:hover {
 #title {
     font-size: 60px;
     font-family: 'Tilt Warp', cursive;
-    background-size: cover;
+    text-align: center;
+    padding: 1rem;
 }
 textarea {
     background: transparent;
     outline: none;
     border: 3px solid rgba(255, 255, 255, 0.62);
     border-radius: 10px;
-    width: 50vw; height: 30vh;
+    width: 60vw; height: 30vh;
     font-size: 17px;
     box-sizing: border-box;
     padding: 0.75rem;
@@ -55,13 +56,14 @@ textarea::placeholder {
     background-color: rgba(255, 255, 255, 0.094);
     border: 2px solid rgba(255, 255, 255, 0.62);
     border-radius: 5px;
-    width: 5vw; height: 5vh;
+    width: fit-content; height: 5vh;
+    padding-left: 1.5rem; padding-right: 1.5rem;
 }
 #debug:hover {
     background-color: rgba(255, 255, 255, 0.201);
 }
 #outputBox {
-    width: 50vw;
+    width: 60vw;
     box-sizing: border-box;
     padding: 0.75rem;
     height: fit-content;
@@ -79,4 +81,13 @@ textarea::placeholder {
     width: 45vw; height: fit-content;
     color: rgba(255, 255, 255, 0.652);
     font-weight: normal;
+}
+
+@media (max-width: 800px) {
+    textarea {
+        width: 70vw; height: 40vh;
+    }
+    #outputBox {
+        width: 70vw;
+    }
 }
